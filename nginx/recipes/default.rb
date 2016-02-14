@@ -6,3 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+execute "yum update" do
+  command "yum update"
+end
