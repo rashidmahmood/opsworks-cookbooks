@@ -59,3 +59,7 @@ end
 execute "updatedb" do
   command "updatedb"
 end
+
+package 's3cmd' do
+  action :install
+end
