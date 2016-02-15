@@ -17,14 +17,14 @@ end
 directory '/etc/nginx/ssl' do
   owner 'root'
   group 'root'
-  mode '0731'
+  mode '0755'
   action :create
 end
 
 directory '/etc/nginx/ssl/hipcricket' do
   owner 'root'
   group 'root'
-  mode '0731'
+  mode '0755'
   action :create
 end
 
