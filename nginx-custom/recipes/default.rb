@@ -14,6 +14,40 @@ package 'nginx' do
   action :install
 end
 
+directory '/etc/nginx/ssl' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  action :create
+end
+
+directory '/etc/nginx/ssl/hipcricket' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  action :create
+end
+
+cookbook_file "/etc/nginx/ssl/hipcricket/star_hipcricket.com.pem" do
+  source "star_hipcricket.com.pem"
+  mode "0644"
+end
+
+cookbook_file "/etc/nginx/ssl/hipcricket/star_hipcricket.com.key" do
+  source "star_hipcricket.com.key"
+  mode "0644"
+end
+
+cookbook_file "/etc/nginx/conf.d/server.conf" do
+  source "server.conf"
+  mode "0644"
+end
+
+cookbook_file "/etc/nginx/conf.d/upstream.conf" do
+  source "upstream.conf"
+  mode "0644"
+end
+
 service 'nginx' do
   action [ :enable, :start ]
 end
@@ -21,6 +55,7 @@ end
 cookbook_file "/var/www/index.html" do
   source "index.html"
   mode "0644"
+  action :delete
 end
 
 
