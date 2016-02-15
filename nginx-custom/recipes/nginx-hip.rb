@@ -17,14 +17,14 @@ end
 directory '/etc/nginx/ssl' do
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0731'
   action :create
 end
 
 directory '/etc/nginx/ssl/hipcricket' do
   owner 'root'
   group 'root'
-  mode '0644'
+  mode '0731'
   action :create
 end
 
@@ -50,12 +50,6 @@ end
 
 service 'nginx' do
   action [ :enable, :start ]
-end
-
-cookbook_file "/var/www/index.html" do
-  source "index.html"
-  mode "0644"
-  action :delete
 end
 
 
