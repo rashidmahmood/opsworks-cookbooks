@@ -22,6 +22,11 @@ package 'nrpe' do
   action :install
 end
 
+cookbook_file "/etc/nagios/nrpe.cfg" do
+  source "nrpe.cfg"
+  mode "0644"
+end
+
 
 #directory '/etc/nginx/ssl' do
 #  owner 'root'
