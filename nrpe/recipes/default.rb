@@ -42,9 +42,9 @@ end
 #end
 
 
-#service 'nginx' do
-#  action [ :enable, :start ]
-#end
+service 'nrpe' do
+  action [ :enable, :start ]
+end
 
 
 
