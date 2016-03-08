@@ -27,7 +27,10 @@ cookbook_file "/etc/nagios/nrpe.cfg" do
   mode "0644"
 end
 
-
+cookbook_file "/usr/lib64/nagios/plugins/check_diskstat.sh" do
+  source "check_diskstat.sh"
+  mode "0644"
+end
 #directory '/etc/nginx/ssl' do
 #  owner 'root'
 #  group 'root'
