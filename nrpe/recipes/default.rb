@@ -1,32 +1,51 @@
 #
-# Author:: Joshua Sierles <joshua@37signals.com>
-# Author:: Joshua Timberman <joshua@getchef.com>
-# Author:: Nathan Haneysmith <nathan@getchef.com>
-# Author:: Seth Chisamore <schisamo@getchef.com>
-# Author:: Tim Smith <tsmith84@gmail.com>
-# Cookbook Name:: nrpe
+# Cookbook Name:: nginx
 # Recipe:: default
 #
-# Copyright 2009, 37signals
-# Copyright 2009-2013, Chef Software, Inc.
-# Copyright 2012, Webtrends, Inc.
-# Copyright 2013-2014, Limelight Networks, Inc.
+# Copyright 2016, YOUR_COMPANY_NAME
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# All rights reserved - Do Not Redistribute
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+execute "yum update" do
+  command "yum update"
+end
 
-# install the nrpe daemon and plugins using the appropriate recipe(s)
-include_recipe "nrpe::_#{node['nrpe']['install_method']}_install"
+package 'nagios-plugins-all' do
+  action :install
+end
 
-# configure the nrpe daemon
-include_recipe 'nrpe::configure'
+package 'nagios-plugins-nrpe' do
+  action :install
+end
+
+package 'nrpe' do
+  action :install
+end
+
+
+#directory '/etc/nginx/ssl' do
+#  owner 'root'
+#  group 'root'
+#  mode '0731'
+#  action :create
+#end
+
+
+#cookbook_file "/etc/nginx/ssl/hipcricket/star_hipcricket.com.pem" do
+#  source "star_hipcricket.com.pem"
+#  mode "0644"
+#end
+
+
+#service 'nginx' do
+#  action [ :enable, :start ]
+#end
+
+
+
+package 'mlocate' do
+  action :install
+end
+execute "updatedb" do
+  command "updatedb"
+end
