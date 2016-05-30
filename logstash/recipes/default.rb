@@ -16,6 +16,10 @@ end
 package 'logstash' do
   action :install
 end
+cookbook_file "/etc/logstash/conf.d/nginx.conf" do
+  source "nginx.conf"
+  mode "0644"
+end
 service 'logstash' do
   action [ :enable, :start ]
 end
