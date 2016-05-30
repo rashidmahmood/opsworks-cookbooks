@@ -6,8 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-execute "yum update" do
-  command "yum update"
+execute "yum -y update" do
+  command "yum -y update"
 end
 
 package 'nginx' do
