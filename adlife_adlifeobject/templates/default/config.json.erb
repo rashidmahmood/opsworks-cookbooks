@@ -1,0 +1,46 @@
+{
+	"impClientDB": "<%= node[:impClientDB] %>",
+	"database": {
+		"dsn": "pgsql:host=hipfabrix-cluster01.cmtcf1bji14d.us-east-1.redshift.amazonaws.com;port=5432;dbname=adlife;",
+		"username": "developer",
+		"password": "one$1216"
+	},
+	"database2": {
+		"driver": "pgsql",
+		"host": "hipfabrix-cluster01.cmtcf1bji14d.us-east-1.redshift.amazonaws.com",
+		"database": "hipfabrix",
+		"username": "adlife_user",
+		"password": "P@ssword!1hipcricket"
+
+	},
+	"api": {
+		"allowed_methods": ["GET"],
+		"client": {
+			"allowed_methods": ["get", "post", "put", "delete"]
+		},
+
+		"eventtype_day": {
+			"table": "dm.agg_sp_ad_eventtype_day"
+		},
+		"campaigns": {
+			"table":"dm.dim_campaigns",
+			"primaryKey": "bk_campaign_key",
+			"prikey": "bk_campaign_key",
+			"where": ["campaign_id"]
+		},
+
+		"sitestats": {
+			"table": "dm.agg_sp_site_geo_hour",
+			"where": ["app_id", "hour_number"]
+		},
+		"adstats": {
+			"table": "dm.agg_sp_site_geo_hour",
+			"where": ["campaign_id", "hour_number"]
+		},
+
+		"reports":{
+
+		}
+
+	}
+}
