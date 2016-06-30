@@ -15,6 +15,6 @@ cookbook_file "/var/services/iptables.sh" do
   source "iptables.sh"
   mode "0755"
 end
-#execute "Setup Iptables" do
-#  command "sh /var/services/iptables.sh"
-#end
+execute "Setup Iptables" do
+  command "sh /var/services/iptables.sh"
+end
