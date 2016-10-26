@@ -69,3 +69,16 @@ end
 package 's3cmd' do
   action :install
 end
+
+####################################
+#local web configs
+cookbook_file "/etc/nginx/conf.d/mock-g-aug-me.conf" do
+  source "mock-g-aug-me.conf"
+  mode "0644"
+end
+directory '/var/www/html/mock-g-aug-me' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
