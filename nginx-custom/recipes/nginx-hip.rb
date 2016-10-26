@@ -6,9 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-execute "yum update" do
-  command "yum update"
-end
+#execute "yum -y update" do
+#  command "yum -y update"
+#end
 
 package 'nginx' do
   action :install
@@ -28,13 +28,19 @@ directory '/etc/nginx/ssl/hipcricket' do
   action :create
 end
 
-cookbook_file "/etc/nginx/ssl/hipcricket/star_hipcricket.com.pem" do
-  source "star_hipcricket.com.pem"
+cookbook_file "/etc/nginx/nginx.conf" do
+  source "nginx.conf"
   mode "0644"
 end
 
-cookbook_file "/etc/nginx/ssl/hipcricket/star_hipcricket.com.key" do
-  source "star_hipcricket.com.key"
+
+cookbook_file "/etc/nginx/ssl/hipcricket/star-hipcricket-com.pem" do
+  source "star-hipcricket-com.pem"
+  mode "0644"
+end
+
+cookbook_file "/etc/nginx/ssl/hipcricket/star-hipcricket-com.key" do
+  source "star-hipcricket-com.key"
   mode "0644"
 end
 
